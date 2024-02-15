@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,18 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/blog', function () {
+Route::prefix('/blog')->name('blog')->controller(BlogController::class)->group(function (){
 
-    //Recup tous
-    $articles = \App\Models\Article::all();
-
-    //Recup un element 
-    //$articles = \App\Models\Article::find(2);
+    Route::get('/','index')->name('index');
     
-    //dd($articles);
-
-    return $articles;
+    Route::get('/{id}','show')->where([
+        'id' => '[0-9]+'
+    ])->name('show');
 });
+ 
+    
+
