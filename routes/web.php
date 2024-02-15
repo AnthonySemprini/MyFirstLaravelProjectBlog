@@ -17,5 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/blog', function () {
-    return 'welcome';
+
+    $article = new \App\Models\Article();
+    $article->Titre = 'Test1';
+    $article->Categorie = 'Test1';
+    $article->Contenu = 'Test1';
+    $article->Image = 'Test1';
+    $article->save();
+
+    return $article;
+
 });
