@@ -18,13 +18,13 @@ Route::get('/', function () {
 });
 Route::get('/blog', function () {
 
-    $article = new \App\Models\Article();
-    $article->Titre = 'Test1';
-    $article->Categorie = 'Test1';
-    $article->Contenu = 'Test1';
-    $article->Image = 'Test1';
-    $article->save();
+    //Recup tous
+    $articles = \App\Models\Article::all();
 
-    return $article;
+    //Recup un element 
+    //$articles = \App\Models\Article::find(2);
+    
+    //dd($articles);
 
+    return $articles;
 });
