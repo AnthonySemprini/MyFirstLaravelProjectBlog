@@ -31,10 +31,10 @@ class BlogController extends Controller
     public function store (Request $request) {
 
         $validatedData = $request->validate([
-            'Titre' => 'required|string|max:255',
-            'Categorie' => 'required|string|max:255',
+            'Titre' => 'required|string|max:100',
+            'Categorie' => 'required|string|max:30',
             'Contenu' => 'required|string',
-            'Image' => 'required|image'
+            'Image' => 'required|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp'
         ]);
 
         $articles = Article::create($validatedData);
@@ -53,7 +53,7 @@ class BlogController extends Controller
             'Titre' => 'required|string|max:255',
             'Categorie' => 'required|string|max:255',
             'Contenu' => 'required|string',
-            'Image' => 'required|image' 
+            'Image' => 'required|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp' 
         ]);
     
         $article = Article::findOrFail($id);
