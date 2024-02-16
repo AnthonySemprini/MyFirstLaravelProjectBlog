@@ -17,7 +17,7 @@
         </div>
     </article>
 </div>
-<a class="text-center" href="#" >
+<a class="text-center" href="{{ route('blog.index') }}" >
     Retour à la liste des articles
 </a>
 

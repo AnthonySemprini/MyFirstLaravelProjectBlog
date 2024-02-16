@@ -39,7 +39,8 @@ class BlogController extends Controller
 
         $articles = Article::create($validatedData);
        
-        return redirect()->route('blog/index')->with('success', 'Article ajouté avec succès !');
+        return redirect()->route('blog.index')->with('success', 'Article ajouté avec succès !');
     }
 }
+
 
