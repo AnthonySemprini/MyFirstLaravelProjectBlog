@@ -34,7 +34,7 @@ class BlogController extends Controller
             'Titre' => 'required|string|max:255',
             'Categorie' => 'required|string|max:255',
             'Contenu' => 'required|string',
-            'Image' => 'required|image' // Décommentez et ajustez selon votre besoin
+            'Image' => 'required|image'
         ]);
 
         $articles = Article::create($validatedData);
