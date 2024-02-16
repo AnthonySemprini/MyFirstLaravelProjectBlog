@@ -16,12 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function () {
 
-    Route::get('/','index')->name('index');
+    Route::get('/', 'index')->name('index');
 
+    Route::get('/detail')->name('detail');
+    
     Route::get('/{id}','show')->where(['id' => '[0-9]+'])->name('show');
     
+    Route::get('/create')->name('create');
+    
+    Route::post('/store')->name('store');
 });
 
- 
+
     
 
