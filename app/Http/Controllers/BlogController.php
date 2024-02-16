@@ -41,6 +41,33 @@ class BlogController extends Controller
        
         return redirect()->route('blog.index')->with('success', 'Article ajouté avec succès !');
     }
+
+    public function edit($id) {
+        $article = Article::findOrFail($id);
+        return view('blog.edit', compact('article'));
+    }
+    
+    public function update(Request $request, $id) {
+
+        $validatedData = $request->validate([
+            'Titre' => 'required|string|max:255',
+            'Categorie' => 'required|string|max:255',
+            'Contenu' => 'required|string',
+            'Image' => 'required|image' 
+        ]);
+    
+        $article = Article::findOrFail($id);
+        $article->update($validatedData);
+        
+        return redirect()->route('blog.index')->with('success', 'Article mis à jour avec succès !');
+    }
+
+    public function destroy($id) {
+        $article = Article::findOrFail($id);
+        $article->delete();
+        
+        return redirect()->route('blog.index')->with('success', 'Article supprimé avec succès !');
+    }
 }
 
 

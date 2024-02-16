@@ -23,6 +23,13 @@ Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(
     Route::post('/store', 'store')->name('store');
     
     Route::get('/{id}','show')->where(['id' => '[0-9]+'])->name('show');
+
+    Route::get('/blog/{id}/edit', 'edit')->name('edit');
+    
+    Route::put('/blog/{id}', 'update')->name('update');
+    
+    Route::delete('/blog/{id}', 'destroy')->name('destroy');
+
 });
 
 

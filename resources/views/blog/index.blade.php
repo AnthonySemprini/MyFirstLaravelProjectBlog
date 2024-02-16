@@ -19,13 +19,23 @@
                     {{-- <p class="text-gray-500">Mis à jour le : {{ $article->updated_at->format('d/m/Y H:i') }}</p> --}}
                 </div>
             </article>
+
+            <a href="{{ route('blog.edit', $article->id) }}" class="btn btn-primary">Modifier</a>
+
+            <form action="{{ route('blog.destroy', $article->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
+            
         </div>
     @endforeach
 
 
-    <a href="{{ route('blog.create') }}" class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150">
+    <a href="{{ route('blog.create') }}"
+        class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:ring ring-blue-300 disabled:opacity-25 transition ease-in-out duration-150">
         Créer un nouvel article
     </a>
-    
-    
+
+
 @endsection
