@@ -12,8 +12,9 @@
             <article class="flex items-center p-8">
 
                 <div class="flex-none">
+                    <a href="{{ route('blog.show', $article->id) }}">
                     <img class="h-52 w-auto" src="{{ asset('storage/' . substr($article->Image, 7)) }}"
-                        alt="Image de l'article">
+                     alt="Image de l'article"></a>
                 </div>
 
                 <div class="flex-grow ml-4">
