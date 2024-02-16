@@ -11,18 +11,16 @@ class BlogController extends Controller
 {
     
     public function index (): View {
-        //$articles = Article::paginate(10);
+       
 
         return view('blog.index',[
         'articles' => Article::paginate(10)
         ]);
     }
-    public function show ( string $id): RedirectResponse | Article {
-        
-        //Recup tous
-    $article = Article::findOrFail($id);
-
-    return $article;
+    public function show(string $id): View {
+        $article = Article::findOrFail($id);
+    
+        return view('blog.detail', ['article' => $article]);
     }
 
     public function add () {
