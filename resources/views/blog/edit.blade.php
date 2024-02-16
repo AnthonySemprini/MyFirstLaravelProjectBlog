@@ -36,7 +36,7 @@
         <small class="block text-red-600">Formats acceptés : jpg, jpeg, png, bmp, gif, svg, webp</small>
     </div>
     
-    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Mettre à jour</button>
+    <button type="submit" class="m-5 p-2 rounded-lg bg-indigo-700 text-white border-2 border-indigo-700 hover:bg-white hover:text-indigo-700 hover:border-2 hover:border-indigo-700 ">Mettre à jour</button>
 </form>
 
 @endsection
