@@ -34,7 +34,7 @@
         <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="file" id="Image" name="Image" required>
         <small class="block text-red-600">Formats acceptés : jpg, jpeg, png, bmp, gif, svg, webp</small>
     </div>
-    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Ajouter</button>
+    <button type="submit" class="w-24 m-5 p-1 rounded-lg bg-indigo-700 text-white text-center border-2 border-indigo-700 hover:bg-white hover:text-indigo-700 hover:border-2 hover:border-indigo-700 ">Ajouter</button>
 </form>
 
 @endsection

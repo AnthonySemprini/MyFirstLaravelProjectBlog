@@ -9,26 +9,30 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    
-    public function index (): View {
-       
-        return view('blog.index',[
-        'articles' => Article::paginate(10)
+
+    public function index(): View
+    {
+
+        return view('blog.index', [
+            'articles' => Article::paginate(10)
         ]);
     }
 
-    public function show(string $id): View {
+    public function show(string $id): View
+    {
         $article = Article::findOrFail($id);
-    
+
         return view('blog.detail', ['article' => $article]);
     }
 
-    public function create() {
+    public function create()
+    {
 
         return view('blog.create');
     }
-  
-    public function store (Request $request) {
+
+    public function store(Request $request)
+    {
 
         $validatedData = $request->validate([
             'Titre' => 'required|string|max:100',
@@ -37,35 +41,53 @@ class BlogController extends Controller
             'Image' => 'required|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp'
         ]);
 
+
+        if ($request->hasFile('Image')) {
+
+            $path = $request->file('Image')->store('public/image');
+
+            $validatedData['Image'] = $path;
+        }
+
         $articles = Article::create($validatedData);
-       
+
         return redirect()->route('blog.index')->with('success', 'Article ajouté avec succès !');
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $article = Article::findOrFail($id);
         return view('blog.edit', compact('article'));
     }
-    
-    public function update(Request $request, $id) {
+
+    public function update(Request $request, $id)
+    {
 
         $validatedData = $request->validate([
             'Titre' => 'required|string|max:255',
             'Categorie' => 'required|string|max:255',
             'Contenu' => 'required|string',
-            'Image' => 'required|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp' 
+            'Image' => 'required|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp'
         ]);
-    
+
+        if ($request->hasFile('Image')) {
+
+            $path = $request->file('Image')->store('public/image');
+
+            $validatedData['Image'] = $path;
+        }
+
         $article = Article::findOrFail($id);
         $article->update($validatedData);
-        
+
         return redirect()->route('blog.index')->with('success', 'Article mis à jour avec succès !');
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $article = Article::findOrFail($id);
         $article->delete();
-        
+
         return redirect()->route('blog.index')->with('success', 'Article supprimé avec succès !');
     }
 }
