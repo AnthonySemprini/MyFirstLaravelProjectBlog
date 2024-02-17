@@ -26,17 +26,17 @@ Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(
 
     Route::get('/', 'index')->name('index');
     
-    Route::get('/create', 'create')->name('create');
+    Route::get('/create', 'create')->name('create')->middleware('auth');
     
     Route::post('/store', 'store')->name('store');
     
     Route::get('/{id}','show')->where(['id' => '[0-9]+'])->name('show');
 
-    Route::get('/blog/{id}/edit', 'edit')->name('edit');
+    Route::get('/blog/{id}/edit', 'edit')->name('edit')->middleware('auth');
     
-    Route::put('/blog/{id}', 'update')->name('update');
+    Route::put('/blog/{id}', 'update')->name('update')->middleware('auth');
     
-    Route::delete('/blog/{id}', 'destroy')->name('destroy');
+    Route::delete('/blog/{id}', 'destroy')->name('destroy')->middleware('auth');
 
 
 });
