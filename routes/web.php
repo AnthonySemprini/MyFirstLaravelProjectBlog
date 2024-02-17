@@ -18,6 +18,8 @@ use App\Http\Controllers\BlogController;
 */
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 
+Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
 Route::post('/login', [AuthController::class, 'doLogin']);
 
 Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function () {
