@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Article;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 
 class BlogController extends Controller
 {
 
     public function index(): View {
+
+        // User::create([
+        //     'name' => 'Marie',
+        //     'email' => 'marie@mail.fr',
+        //     'password' => Hash::make('0000')
+        // ]);
+        
         $articles = Article::paginate(2); 
         return view('blog.index', ['articles' => $articles]);
     }

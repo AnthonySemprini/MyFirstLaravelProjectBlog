@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\BlogController;
+
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+
+Route::post('/login', [AuthController::class, 'doLogin']);
 
 Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function () {
 
@@ -29,6 +35,7 @@ Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(
     Route::put('/blog/{id}', 'update')->name('update');
     
     Route::delete('/blog/{id}', 'destroy')->name('destroy');
+
 
 });
 
