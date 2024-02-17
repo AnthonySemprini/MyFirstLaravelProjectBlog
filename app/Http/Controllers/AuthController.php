@@ -24,12 +24,7 @@ class AuthController extends Controller
         
 
         $credentials = $request->validated();  
-        
-        // if (Auth::validate($credentials)) {
-        //     dd('Les informations d\'identification sont correctes.');
-        // } else {
-        //     dd('Les informations d\'identification sont incorrectes.');
-        // }
+     
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended(route('blog.index'));

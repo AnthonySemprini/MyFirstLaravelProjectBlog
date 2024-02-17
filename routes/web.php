@@ -5,6 +5,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,10 @@ Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 Route::post('/login', [AuthController::class, 'doLogin']);
+
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('auth.register');
+
+Route::post('/register', [RegisterController::class, 'register']);
 
 Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function () {
 

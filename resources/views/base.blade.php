@@ -42,10 +42,10 @@
                         </form>
                     @endauth
                     @guest
-                        <a href="{{ route('auth.login')}}"
+                        <a href="{{ route('auth.login') }}"
                             class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                             aria-current="page">Se connecter</a>
-                        <a href="#"
+                        <a href="{{ route('auth.register') }}"
                             class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                             aria-current="page">S'incrire</a>    
                     @endguest
