@@ -10,12 +10,9 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
 
-    public function index(): View
-    {
-
-        return view('blog.index', [
-            'articles' => Article::paginate(10)
-        ]);
+    public function index(): View {
+        $articles = Article::paginate(2); 
+        return view('blog.index', ['articles' => $articles]);
     }
 
     public function show(string $id): View

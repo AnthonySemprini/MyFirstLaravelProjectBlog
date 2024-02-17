@@ -9,27 +9,29 @@
 
     @foreach ($articles as $article)
         <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl my-5">
-            <article class="flex items-center p-8">
+            <a href="{{ route('blog.show', $article->id) }}">
+                <article class="flex items-center p-8">
 
-                <div class="flex-none">
-                    <a href="{{ route('blog.show', $article->id) }}">
-                    <img class="h-52 w-auto" src="{{ asset('storage/' . substr($article->Image, 7)) }}"
-                     alt="Image de l'article"></a>
-                </div>
-
-                <div class="flex-grow ml-4">
-                    <h2 class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
-                        <a href="{{ route('blog.show', $article->id) }}">Titre : {{ $article->Titre }}</a>
-                    </h2>
-                    <p class="mt-2 text-gray-500">Catégorie : {{ $article->Categorie }}</p>
-                    <div class="mt-4">
-                        <p class="text-gray-500">Créé le : {{ $article->created_at->format('d/m/Y H:i') }}</p>
+                    <div class="flex-none">
+                        <img class="h-52 w-auto"
+                            src="{{ asset('storage/' . substr($article->Image, 7)) }}"alt="Image de l'article">
                     </div>
-                </div>
-            </article>
+
+                    <div class="flex-grow ml-4">
+                        <h2 class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">Titre :
+                            {{ $article->Titre }}</h2>
+                        <p class="mt-2 text-gray-500">Catégorie : {{ $article->Categorie }}</p>
+                        <div class="mt-4">
+                            <p class="text-gray-500">Créé le : {{ $article->created_at->format('d/m/Y H:i') }}</p>
+                        </div>
+                    </div>
+                </article>
+            </a>
         </div>
     @endforeach
 
-
+    <div class="h-14">
+        {{ $articles->links() }}
+    </div>
 
 @endsection
