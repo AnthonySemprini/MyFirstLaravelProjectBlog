@@ -25,7 +25,7 @@ Route::post('/login', [AuthController::class, 'doLogin']);
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('auth.register');
 
-Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
 
 Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function () {
 

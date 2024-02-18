@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
@@ -17,6 +17,8 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         
+   
+       
         $request->validate([
             'name' => 'required|string|max:100',
             'email' => 'required|string|email|max:255|unique:users',
@@ -39,6 +41,7 @@ class RegisterController extends Controller
         return redirect()->route('auth.login')->withErrors([
             'email' => 'Un problème est survenu lors de la tentative de connexion automatique après l\'inscription.'
         ]);
+
     }
     
 }
