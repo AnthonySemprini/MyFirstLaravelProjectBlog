@@ -25,16 +25,16 @@
                             <a href="{{ route('blog.index') }}"
                                 class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                                 aria-current="page">Mon blog</a>
-                            @if (auth()->check() && auth()->user()->isAdmin)
+                            @if (auth()->check() && auth()->user()->isAdmin())
                                 <a href="{{ route('blog.create') }}"
                                     class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                                     aria-current="page">Créer un nouvel article</a>
-                            @endif
+                             @endif
                         </div>
                     </div>
 
                 </div>
-                <div>
+                <div> 
                     @auth
                         {{ \Illuminate\Support\Facades\auth::user()->name }}
                         <form action="{{ route('auth.logout') }}" method="POST">
@@ -61,7 +61,7 @@
                 <a href="{{ route('blog.index') }}"
                     class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
                     aria-current="page">Mon blog</a>
-                @if (auth()->check() && auth()->user()->isAdmin)
+                @if (auth()->check() && auth()->user()->isAdmin())
                     <a href="{{ route('blog.create') }}"
                         class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
                         aria-current="page">Créer un nouvel article</a>
