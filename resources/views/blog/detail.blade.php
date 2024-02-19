@@ -11,7 +11,7 @@
             <h2 class="block mt-1 text-lg leading-tight font-medium text-black ">Titre : {{ $article->Titre }}</h2>
             <p class="mt-2 text-gray-500">Catégorie : {{ $article->Categorie }}</p>
             <p class="mt-2 text-justify">{{ $article->Contenu }}</p>
-            <img class=" my-2 h-52 w-auto" src="{{ asset('storage/' . substr($article->Image, 7)) }}" alt="Image de l'article">
+            <img class=" my-2 h-52 w-auto" src="{{ $article->Image }}" alt="Image de l'article">
 
             <div class="mt-4">
                 <p class="text-gray-500">Créé le : {{ $article->created_at->format('d/m/Y H:i') }}</p>

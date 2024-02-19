@@ -23,7 +23,7 @@ class BlogController extends Controller
         //     'password' => Hash::make('0000')
         // ]);
 
-        $articles = Article::paginate(2);
+        $articles = Article::paginate(8);
         return view('blog.index', ['articles' => $articles]);
     }
 
