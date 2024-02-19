@@ -25,9 +25,11 @@
                             <a href="{{ route('blog.index') }}"
                                 class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                                 aria-current="page">Mon blog</a>
-                            <a href="{{ route('blog.create') }}"
-                                class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
-                                aria-current="page">Créer un nouvel article</a>
+                            @if (auth()->check() && auth()->user()->isAdmin)
+                                <a href="{{ route('blog.create') }}"
+                                    class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                                    aria-current="page">Créer un nouvel article</a>
+                            @endif
                         </div>
                     </div>
 
@@ -36,18 +38,19 @@
                     @auth
                         {{ \Illuminate\Support\Facades\auth::user()->name }}
                         <form action="{{ route('auth.logout') }}" method="POST">
-                            @method("delete")
+                            @method('delete')
                             @csrf
-                            <button class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium">Se deconnecter</button>
+                            <button class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium">Se
+                                deconnecter</button>
                         </form>
                     @endauth
                     @guest
                         <a href="{{ route('auth.login') }}"
-                            class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
-                            aria-current="page">Se connecter</a>
+                            class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Se
+                            connecter</a>
                         <a href="{{ route('auth.register') }}"
                             class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
-                            aria-current="page">S'incrire</a>    
+                            aria-current="page">S'incrire</a>
                     @endguest
                 </div>
             </div>
@@ -58,14 +61,15 @@
                 <a href="{{ route('blog.index') }}"
                     class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
                     aria-current="page">Mon blog</a>
-    
-                <a href="{{ route('blog.create') }}"
-                    class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-                    aria-current="page">Créer un nouvel article</a>
+                @if (auth()->check() && auth()->user()->isAdmin)
+                    <a href="{{ route('blog.create') }}"
+                        class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+                        aria-current="page">Créer un nouvel article</a>
+                @endif
             </div>
         </div>
     </nav>
-    
+
 
     <div class="container">
         @yield('content')

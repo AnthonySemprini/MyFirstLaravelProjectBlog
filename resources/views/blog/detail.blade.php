@@ -17,17 +17,19 @@
                 <p class="text-gray-500">Créé le : {{ $article->created_at->format('d/m/Y H:i') }}</p>
                 <p class="text-gray-500">Mis à jour le : {{ $article->updated_at->format('d/m/Y H:i') }}</p>
             </div>
-            <div
-                class="w-24 m-5 p-1 rounded-lg bg-indigo-700 text-white text-center border-2 border-indigo-700 hover:bg-white hover:text-indigo-700 hover:border-2 hover:border-indigo-700 ">
-                <a href="{{ route('blog.edit', $article->id) }}" class=" ">Modifier</a>
-            </div>
-            <form
-                class="w-24 m-5 p-1 rounded-lg bg-red-700 text-white text-center border-2 border-red-700 hover:bg-white hover:text-red-700 hover:border-2 hover:border-red-700 "
-                action="{{ route('blog.destroy', $article->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Supprimer</button>
-            </form>
+            @if (auth()->check() && auth()->user()->isAdmin)
+                <div
+                    class="w-24 m-5 p-1 rounded-lg bg-indigo-700 text-white text-center border-2 border-indigo-700 hover:bg-white hover:text-indigo-700 hover:border-2 hover:border-indigo-700 ">
+                    <a href="{{ route('blog.edit', $article->id) }}" class=" ">Modifier</a>
+                </div>
+                <form
+                    class="w-24 m-5 p-1 rounded-lg bg-red-700 text-white text-center border-2 border-red-700 hover:bg-white hover:text-red-700 hover:border-2 hover:border-red-700 "
+                    action="{{ route('blog.destroy', $article->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Supprimer</button>
+                </form>
+            @endif
         </article>
     </div>
 
