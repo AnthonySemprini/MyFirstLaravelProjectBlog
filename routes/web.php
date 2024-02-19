@@ -34,6 +34,9 @@ Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(
     Route::get('/', 'index')->name('index');
     
     Route::get('/{id}','show')->where(['id' => '[0-9]+'])->name('show');
+
+    Route::post('/{id}/like', 'likeArticle')->name('article.like');
+
     
     //Route Admin
     

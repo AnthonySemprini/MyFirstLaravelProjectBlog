@@ -26,12 +26,20 @@ class BlogController extends Controller
         return view('blog.index', ['articles' => $articles]);
     }
 
-    public function show(string $id): View
-    {
-        $article = Article::findOrFail($id);
-
-        return view('blog.detail', ['article' => $article]);
+public function show($articleId)
+{
+    // Récupère l'article par son ID
+    $article = Article::with('likes')->find($articleId);
+    if (!$article) {
+        abort(404);
     }
+
+    // Compte le nombre de likes de l'article
+    $likesCount = $article->likes->count();
+
+    // Passe l'article et le nombre de likes à la vue
+    return view('blog.detail', ['article' => $article, 'likesCount' => $likesCount]);
+}
 
     public function create()
     {
@@ -98,6 +106,25 @@ class BlogController extends Controller
 
         return redirect()->route('blog.index')->with('success', 'Article supprimé avec succès !');
     }
+
+    public function likeArticle($articleId)
+{
+    $userId = auth()->id(); // Assurez-vous que l'utilisateur est connecté
+    if (!$userId) {
+        return redirect()->back()->with('error', 'Vous devez être connecté pour aimer un article.');
+    }
+
+    $article = Article::find($articleId);
+    if (!$article) {
+        abort(404);
+    }
+
+    // Ajoute un like à l'article
+    $article->likes()->create(['user_id' => $userId]);
+
+    return redirect()->back()->with('success', 'Article aimé avec succès.');
+}
+
 }
 
 

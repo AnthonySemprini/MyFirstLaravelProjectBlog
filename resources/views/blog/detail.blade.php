@@ -29,6 +29,13 @@
                     @method('DELETE')
                     <button type="submit">Supprimer</button>
                 </form>
+            @else
+            <p>{{ $likesCount }} likes</p>
+
+            <form action="{{ route('blog.article.like', $article->id) }}" method="POST">
+                @csrf
+                <button type="submit">Like</button>
+            </form>
             @endif
         </article>
     </div>
