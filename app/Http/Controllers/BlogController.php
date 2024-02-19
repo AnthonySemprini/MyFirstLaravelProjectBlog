@@ -16,13 +16,6 @@ class BlogController extends Controller
     public function index(): View
     {
 
-        // dd(Auth::user());
-        // User::create([
-        //     'name' => 'Marie',
-        //     'email' => 'marie@mail.fr',
-        //     'password' => Hash::make('0000')
-        // ]);
-
         $articles = Article::paginate(8);
         return view('blog.index', ['articles' => $articles]);
     }

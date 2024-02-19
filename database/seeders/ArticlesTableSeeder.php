@@ -22,7 +22,7 @@ class ArticlesTableSeeder extends Seeder
             'Titre' => $faker->sentence, 
             'Categorie' => $faker->word, 
             'Contenu' => $faker->paragraph, 
-            'Image' => $faker->imageUrl(640, 480, 'animals', true), 
+            'Image' => $faker->imageUrl(640, 480, true), 
         ]);
     }
 }
