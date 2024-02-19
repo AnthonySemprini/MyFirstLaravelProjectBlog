@@ -2,6 +2,7 @@
 
 
 
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
@@ -27,21 +28,24 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 
 Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
 
+
 Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function () {
 
     Route::get('/', 'index')->name('index');
     
-    Route::get('/create', 'create')->name('create')->middleware('auth');
-    
-    Route::post('/store', 'store')->name('store');
-    
     Route::get('/{id}','show')->where(['id' => '[0-9]+'])->name('show');
+    
+    //Route Admin
+    
+    Route::get('/create', 'create')->name('create')->middleware('auth', 'isAdmin');
+    
+    Route::post('/store', 'store')->name('store')->middleware('auth', 'isAdmin');
 
-    Route::get('/blog/{id}/edit', 'edit')->name('edit')->middleware('auth');
+    Route::get('/blog/{id}/edit', 'edit')->name('edit')->middleware('auth', 'isAdmin');
     
-    Route::put('/blog/{id}', 'update')->name('update')->middleware('auth');
+    Route::put('/blog/{id}', 'update')->name('update')->middleware('auth', 'isAdmin');
     
-    Route::delete('/blog/{id}', 'destroy')->name('destroy')->middleware('auth');
+    Route::delete('/blog/{id}', 'destroy')->name('destroy')->middleware('auth', 'isAdmin');
 
 
 });
