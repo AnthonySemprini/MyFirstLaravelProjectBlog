@@ -13,7 +13,7 @@
                 <article class="flex items-center p-8">
 
                     <div class="flex-none">
-                        <img class="h-52 w-auto"
+                        <img class="h-52 w-32"
                             src="{{ asset('storage/' . substr($article->Image, 7)) }}"alt="Image de l'article">
                     </div>
 
