@@ -19,10 +19,10 @@ class ArticlesTableSeeder extends Seeder
     // Bouclez pour créer plusieurs articles
     for ($i = 0; $i < 100; $i++) {
         Article::create([
-            'Titre' => $faker->sentence, // Génère une phrase aléatoire
-            'Categorie' => $faker->word, // Génère un mot aléatoire
-            'Contenu' => $faker->paragraph, // Génère un paragraphe aléatoire
-            'Image' => $faker->imageUrl(640, 480, 'animals', true), // Génère une URL d'image factice
+            'Titre' => $faker->sentence, 
+            'Categorie' => $faker->word, 
+            'Contenu' => $faker->paragraph, 
+            'Image' => $faker->imageUrl(640, 480, 'animals', true), 
         ]);
     }
 }
