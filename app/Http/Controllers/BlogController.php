@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Hash;
 class BlogController extends Controller
 {
 
-    public function index(): View {
+    public function index(): View
+    {
 
         // dd(Auth::user());
         // User::create([
@@ -21,25 +22,25 @@ class BlogController extends Controller
         //     'email' => 'marie@mail.fr',
         //     'password' => Hash::make('0000')
         // ]);
-        
-        $articles = Article::paginate(2); 
+
+        $articles = Article::paginate(2);
         return view('blog.index', ['articles' => $articles]);
     }
 
-public function show($articleId)
-{
-    // Récupère l'article par son ID
-    $article = Article::with('likes')->find($articleId);
-    if (!$article) {
-        abort(404);
+    public function show($articleId)
+    {
+        // Récupère l'article par son ID
+        $article = Article::with('likes')->find($articleId);
+        if (!$article) {
+            abort(404);
+        }
+
+        // Compte le nombre de likes de l'article
+        $likesCount = $article->likes->count();
+
+        // Passe l'article et le nombre de likes à la vue
+        return view('blog.detail', ['article' => $article, 'likesCount' => $likesCount]);
     }
-
-    // Compte le nombre de likes de l'article
-    $likesCount = $article->likes->count();
-
-    // Passe l'article et le nombre de likes à la vue
-    return view('blog.detail', ['article' => $article, 'likesCount' => $likesCount]);
-}
 
     public function create()
     {
@@ -109,7 +110,7 @@ public function show($articleId)
 
     public function likeArticle($articleId)
 {
-    $userId = auth()->id(); // Assurez-vous que l'utilisateur est connecté
+    $userId = auth()->id(); 
     if (!$userId) {
         return redirect()->back()->with('error', 'Vous devez être connecté pour aimer un article.');
     }
@@ -119,11 +120,18 @@ public function show($articleId)
         abort(404);
     }
 
-    // Ajoute un like à l'article
-    $article->likes()->create(['user_id' => $userId]);
-
-    return redirect()->back()->with('success', 'Article aimé avec succès.');
+    // Vérifie si l'utilisateur a déjà aimé l'article
+    $existingLike = $article->likes()->where('user_id', $userId)->first();
+    if ($existingLike) {
+        // L'utilisateur a déjà aimé l'article, donc on ne fait rien ou on informe l'utilisateur
+        return redirect()->back()->with('info', 'Vous avez déjà like cet article.');
+    } else {
+        // Ajoute un like à l'article
+        $article->likes()->create(['user_id' => $userId]);
+        return redirect()->back()->with('success', 'Merci pour votre like.');
+    }
 }
+
 
 }
 

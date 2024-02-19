@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @vite('resources/css/app.css')
+    <script src="https://kit.fontawesome.com/ef55713c5a.js" crossorigin="anonymous"></script>
     <title>@yield('title')</title>
 </head>
 

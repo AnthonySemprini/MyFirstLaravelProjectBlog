@@ -30,15 +30,28 @@
                     <button type="submit">Supprimer</button>
                 </form>
             @else
-            <p>{{ $likesCount }} likes</p>
+                
 
-            <form action="{{ route('blog.article.like', $article->id) }}" method="POST">
-                @csrf
-                <button type="submit">Like</button>
-            </form>
-            @endif
-        </article>
-    </div>
+                <form action="{{ route('blog.article.like', $article->id) }}" method="POST">
+                    @csrf
+                    <button type="submit">{{ $likesCount }} <i class="fa-regular fa-thumbs-up"></i></button>
+                </form>
+            </article>
+        </div>
+        @endif
+        {{-- Vérifiez et affichez le message de succès --}}
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        {{-- Vérifiez et affichez le message d'information --}}
+        @if (session('info'))
+            <div class="alert alert-info">
+                {{ session('info') }}
+            </div>
+        @endif
 
 
 @endsection
