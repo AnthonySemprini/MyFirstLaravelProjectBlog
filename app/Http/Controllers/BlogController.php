@@ -25,18 +25,14 @@ class BlogController extends Controller
         return view('blog.index', ['articles' => $articles]);
     }
 
-    public function show($articleId)
+      public function show($articleId)
     {
-        // Récupère l'article par son ID
         $article = Article::with('likes')->find($articleId);
         if (!$article) {
             abort(404);
         }
-
-        // Compte le nombre de likes de l'article
         $likesCount = $article->likes->count();
 
-        // Passe l'article et le nombre de likes à la vue
         return view('blog.detail', ['article' => $article, 'likesCount' => $likesCount]);
     }
 
@@ -118,13 +114,13 @@ class BlogController extends Controller
         abort(404);
     }
 
-    // Vérifie si l'utilisateur a déjà aimé l'article
+  
     $existingLike = $article->likes()->where('user_id', $userId)->first();
     if ($existingLike) {
-        // L'utilisateur a déjà aimé l'article, donc on ne fait rien ou on informe l'utilisateur
+        
         return redirect()->back()->with('info', 'Vous avez déjà like cet article.');
     } else {
-        // Ajoute un like à l'article
+
         $article->likes()->create(['user_id' => $userId]);
         return redirect()->back()->with('success', 'Merci pour votre like.');
     }

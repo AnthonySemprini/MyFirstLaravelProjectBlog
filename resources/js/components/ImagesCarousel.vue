@@ -2,7 +2,6 @@
   <div class="flex justify-center items-center ">
     <div class="carousel relative shadow-lg bg-white max-w-4xl">
       <div class="carousel-inner relative overflow-hidden w-full">
-        <!-- Article Slide Loop -->
         <div v-for="(article, index) in articles" :key="article.id" 
              class="carousel-item absolute opacity-0" :class="{ 'active': index === currentIndex }"
              v-show="index === currentIndex">
@@ -15,7 +14,6 @@
           </div>
         </div>
       </div>
-      <!-- Navigation Arrows -->
       <button @click="prev" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white bg-opacity-50 p-2">
         &#10094;
       </button>
