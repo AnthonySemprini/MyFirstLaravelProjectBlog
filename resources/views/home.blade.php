@@ -9,8 +9,7 @@
     @vite('resources/js/app.js')
 
     <div id="app">
-        <search-bar></search-bar>
-    
+        <image-carousel></image-carousel>
         <articles-list></articles-list>
       </div>
        
