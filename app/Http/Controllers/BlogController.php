@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Hash;
 class BlogController extends Controller
 {
 
+    public function home(): View
+    {
+
+        return view('home');
+    }
     public function index(): View
     {
 

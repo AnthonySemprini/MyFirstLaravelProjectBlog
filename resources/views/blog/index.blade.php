@@ -13,7 +13,7 @@
         <counter-component></counter-component>
       </div>
       
-{{-- 
+
       
     @foreach ($articles as $article)
         <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl my-5">
@@ -39,7 +39,6 @@
 
     <div class="h-14">
         {{ $articles->links() }}
-    </div> --}}
-    
+    </div> 
       
 @endsection

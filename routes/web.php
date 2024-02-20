@@ -18,6 +18,8 @@ use App\Http\Controllers\RegisterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 
 Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
@@ -29,7 +31,10 @@ Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->na
 Route::post('/register', [RegisterController::class, 'register'])->name('auth.register');
 
 
+
+
 Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(function () {
+
 
     Route::get('/', 'index')->name('index');
     
@@ -53,6 +58,8 @@ Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(
 
 });
 
-
+Route::get('/', function () {
+    return view('home');
+})->name('home');
     
 
