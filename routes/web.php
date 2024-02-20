@@ -6,6 +6,7 @@ use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -57,6 +58,11 @@ Route::prefix('/blog')->name('blog.')->controller(BlogController::class)->group(
 
 
 });
+
+
+
+
+
 
 Route::get('/', function () {
     return view('home');

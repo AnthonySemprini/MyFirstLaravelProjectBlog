@@ -8,4 +8,14 @@
 
     @vite('resources/js/app.js')
 
+    {{-- <div id="app">
+        <counter-component></counter-component>
+      </div> --}}
+
+      <div id="app">
+        <articles-list></articles-list>
+      </div>
+       
+
+
 @endsection

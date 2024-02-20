@@ -7,14 +7,7 @@
     <h1 class="text-center text-gray-700 font-bold text-xl m-5">Mon blog</h1>
 
     @vite('resources/js/app.js')
-
-  
-    <div id="app">
-        <counter-component></counter-component>
-      </div>
-      
-
-      
+ 
     @foreach ($articles as $article)
         <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl my-5">
             <a href="{{ route('blog.show', $article->id) }}">
