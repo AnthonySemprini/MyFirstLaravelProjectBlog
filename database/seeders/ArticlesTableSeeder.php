@@ -18,11 +18,14 @@ class ArticlesTableSeeder extends Seeder
 
     // Bouclez pour créer plusieurs articles
     for ($i = 0; $i < 100; $i++) {
+
+        $imageUrl = 'https://picsum.photos/800/600?random=' . mt_rand();
+
         Article::create([
             'Titre' => $faker->sentence, 
             'Categorie' => $faker->word, 
             'Contenu' => $faker->paragraph, 
-            'Image' => $faker->imageUrl(640, 480, true), 
+            'Image'  => $imageUrl
         ]);
     }
 }
