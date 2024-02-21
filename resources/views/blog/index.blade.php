@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1 class="text-center text-gray-700 font-bold text-xl m-5">Mon blog</h1>
+    <h1 class="text-center text-gray-700 font-bold text-3xl m-5">Mes articles</h1>
 
     @vite('resources/js/app.js')
  
@@ -14,7 +14,7 @@
                 <article class="flex items-center p-8">
 
                     <div class="flex-none">
-                        <img class="h-52 w-32" src="{{ $article->Image }}" alt="Image de l'article" >
+                        <img class="h-52 w-44" src="{{ $article->Image }}" alt="Image de l'article" >
                     </div>
 
                     <div class="flex-grow ml-4">

@@ -13,10 +13,10 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
 {
-    // Obtenez une instance de Faker
+    
     $faker = \Faker\Factory::create();
 
-    // Bouclez pour créer plusieurs articles
+    
     for ($i = 0; $i < 100; $i++) {
 
         $imageUrl = 'https://picsum.photos/800/600?random=' . mt_rand();

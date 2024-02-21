@@ -3,7 +3,7 @@
 @section('title', 'Modifier l\'article')
 
 @section('content')
-<h1 class="text-center text-gray-700 font-bold text-xl m-5">Modifier l'article</h1>
+<h1 class="text-center text-gray-700 font-bold text-3xl m-5">Modifier l'article</h1>
 
 @if ($errors->any())
     <div>

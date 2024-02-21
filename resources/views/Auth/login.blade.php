@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="text-center text-gray-700 font-bold text-xl m-5">Se connecter</h1>
+<h1 class="text-center text-gray-700 font-bold text-3xl m-5">Se connecter</h1>
 
 <div class="card-body">
     <form action="{{ route('auth.login') }}" method="post" class="max-w-lg mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">

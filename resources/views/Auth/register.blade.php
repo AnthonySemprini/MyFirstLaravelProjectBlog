@@ -1,17 +1,8 @@
 @extends('base')
 
 @section('content')
-    <h1 class="text-center text-gray-700 font-bold text-xl m-5">S'inscrire</h1>
+    <h1 class="text-center text-gray-700 font-bold text-3xl m-5">S'inscrire</h1>
 
-    {{-- @if ($errors->any())
-        <div>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif --}}
 
     <form action="{{ route('auth.register') }}" method="post" enctype="multipart/form-data" class="max-w-lg mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" >
         @csrf

@@ -60,7 +60,9 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile menu, show/hide based on menu state. -->
+
+        {{-- Mobile menu --}}
+
         <div class="sm:hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pb-3 pt-2">
                 <a href="{{ route('home') }}"
@@ -78,11 +80,14 @@
         </div>
     </nav>
 
+    {{-- Container --}}
 
-    <div class="container">
+    <div class="container ">
         @yield('content')
     </div>
 
+    {{-- Footer --}}
+    
     <footer class="bg-gray-500 mt-5">
         <div class="mx-auto max-w-7xl px-2 py-4 sm:px-6 lg:px-8">
             <div class="flex flex-wrap items-center justify-between">

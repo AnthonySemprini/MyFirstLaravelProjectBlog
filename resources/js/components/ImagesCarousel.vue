@@ -1,11 +1,12 @@
 <template>
+  <h2 class="text-center text-gray-700 font-bold text-xl m-5">Carousel d'articles du blog</h2>
   <div class="flex justify-center items-center ">
-    <div class="carousel relative shadow-lg bg-white max-w-4xl">
+    <div class="carousel relative shadow-lg bg-white max-w-xl mx-auto">
       <div class="carousel-inner relative overflow-hidden w-full">
         <div v-for="(article, index) in articles" :key="article.id" 
              class="carousel-item absolute opacity-0" :class="{ 'active': index === currentIndex }"
              v-show="index === currentIndex">
-          <img :src="article.Image" :alt="article.Titre" class="block mx-auto h-64 w-full object-cover">
+             <img :src="article.Image" :alt="article.Titre" class="block mx-auto h-auto w-full object-cover">
           <div class="p-4">
             <h2 class="text-lg font-semibold">{{ article.Titre }}</h2>
             <p>Catégorie : {{ article.Categorie }}</p>

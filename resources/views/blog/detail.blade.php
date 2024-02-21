@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <h1 class="text-center text-gray-700 font-bold text-xl m-5">Détail de l'article</h1>
+    <h1 class="text-center text-gray-700 font-bold text-3xl m-5">Détail de l'article</h1>
 
     <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl my-5">
         <article class="p-8">
@@ -39,14 +39,12 @@
             </article>
         </div>
         @endif
-        {{-- Vérifiez et affichez le message de succès --}}
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
 
-        {{-- Vérifiez et affichez le message d'information --}}
         @if (session('info'))
             <div class="alert alert-info">
                 {{ session('info') }}
